@@ -1,0 +1,29 @@
+For a given non-negative integer N, find the next smallest Happy Number. A number is called Happy if it leads to 1 after a sequence of steps. Wherein at each step the number is replaced by the sum of squares of its digits that is, if we start with Happy Number and keep replacing it with sum of squares of its digits, we reach 1 at some point.
+ 
+Example 1:
+
+Input:
+N = 8
+Output:
+10
+Explanation:
+Next happy number after 8 is 10 since
+1*1 + 0*0 = 1
+
+def isHappy(n):
+    seen = set()
+    while n != 1 and n not in seen:
+        seen.add(n)
+        n = sum(int(digit) ** 2 for digit in str(n))
+    return n == 1
+
+def nextHappyNumber(N):
+    while True:
+        N += 1
+        if isHappy(N):
+            return N
+
+# Example usage:
+N = 8
+result = nextHappyNumber(N)
+print(result)  # Output: 10
